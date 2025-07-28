@@ -3,9 +3,8 @@ import Container from "@/Components/Container.vue";
 import Title from "@/Components/Title.vue";
 import InputField from "@/Components/InputField.vue";
 import PrimaryBtn from "@/Components/PrimaryBtn.vue";
-import {router, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import ErrorMessages from "@/Components/ErrorMessages.vue";
-import SessionMessages from "@/Components/SessionMessages.vue";
 
 const form = useForm({
     current_password: '',

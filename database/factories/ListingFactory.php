@@ -22,7 +22,7 @@ class ListingFactory extends Factory
             'desc' => fake()->paragraph(12),
             'email' => fake()->email(),
             'link' => fake()->url(),
-            'tags' => fake()->randomElement(['tag1', 'tag2', 'tag3', 'tag4', 'tag5']),
+            'tags' => fake()->randomElement(['tag1,tag6', 'tag2,tag7', 'tag3,tag6', 'tag4,tag7', 'tag5,tag6']),
             'approved' => 1
         ];
     }

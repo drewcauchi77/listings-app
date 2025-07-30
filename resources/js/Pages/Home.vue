@@ -4,6 +4,8 @@ import PaginationLinks from "@/Components/PaginationLinks.vue";
 import InputField from "@/Components/InputField.vue";
 import {router, useForm} from "@inertiajs/vue3";
 
+const params = route().params;
+
 const props = defineProps({
     listings: Object,
     searchTerm: String
@@ -15,7 +17,9 @@ const form = useForm({
 
 const search = () => {
     router.get(route('home'), {
-        search: form.search
+        search: form.search,
+        user_id: params.user_id,
+        tag: params.tag
     });
 };
 </script>

@@ -30,8 +30,20 @@ class Listing extends Model
     {
         if ($filters['search'] ?? false)
         {
-            $query->where('title', 'LIKE', '%' . request()->search . '%')
-                ->orWhere('desc', 'LIKE', '%' . request()->search . '%');
+            $query->where(function ($q) {
+                return $q->where('title', 'LIKE', '%' . request()->search . '%')
+                    ->orWhere('desc', 'LIKE', '%' . request()->search . '%');
+            });
+        }
+
+        if ($filters['user_id'] ?? false)
+        {
+            $query->where('user_id', request()->user_id);
+        }
+
+        if ($filters['tag'] ?? false)
+        {
+            $query->where('tags', 'LIKE', '%' . request()->tag . '%');
         }
     }
 }

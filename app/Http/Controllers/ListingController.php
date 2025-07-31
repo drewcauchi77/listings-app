@@ -36,7 +36,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Listing/Create');
     }
 
     /**

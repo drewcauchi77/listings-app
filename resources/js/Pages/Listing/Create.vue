@@ -6,6 +6,7 @@ import InputField from "@/Components/InputField.vue";
 import TextArea from "@/Components/TextArea.vue";
 import ImageUpload from "@/Components/ImageUpload.vue";
 import ErrorMessages from "@/Components/ErrorMessages.vue";
+import PrimaryBtn from "@/Components/PrimaryBtn.vue";
 
 const form = useForm({
     title: null,
@@ -14,7 +15,11 @@ const form = useForm({
     email: null,
     link: null,
     image: null
-})
+});
+
+const submit = () => {
+    form.post(route('listings.store'));
+}
 </script>
 
 <template>
@@ -26,7 +31,7 @@ const form = useForm({
 
         <ErrorMessages :errors="form.errors" />
 
-        <form class="grid grid-cols-2 gap-6">
+        <form @submit.prevent="submit" class="grid grid-cols-2 gap-6">
             <div class="space-y-6">
                 <InputField label="Title" icon="heading" placeholder="My New Listing" v-model="form.title" />
                 <InputField label="Tags (separate with comma)" icon="tags" placeholder="Tag1, Tag2, Tag3" v-model="form.tags" />
@@ -37,6 +42,10 @@ const form = useForm({
                 <InputField label="Email" icon="at" placeholder="john.doe@example.com" v-model="form.email" />
                 <InputField label="External Link" icon="up-right-from-square" placeholder="https://example.com" v-model="form.link" />
                 <ImageUpload @image="(e) => form.image = e" />
+            </div>
+
+            <div>
+                <PrimaryBtn>Create</PrimaryBtn>
             </div>
         </form>
     </Container>

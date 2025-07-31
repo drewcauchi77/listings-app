@@ -27,7 +27,7 @@ const selectTag = (tag) => {
 <template>
     <div class="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-slate-800 h-full flex flex-col justify-between">
         <div>
-            <Link href="">
+            <Link :href="route('listings.show', listing.id)">
                 <img :src="listing.image ? `storage/${listing.image}` : `storage/images/listing/default.jpg`" class="w-full h-48 bg-slate-300 object-cover object-center" :alt="listing.title" />
             </Link>
 

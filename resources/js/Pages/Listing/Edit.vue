@@ -18,11 +18,12 @@ const form = useForm({
     tags: props.listing.tags,
     email: props.listing.email,
     link: props.listing.link,
-    image: null
+    image: null,
+    _method: 'PUT'
 });
 
 const submit = () => {
-    form.post(route('listings.store'));
+    form.post(route('listings.update', props.listing.id));
 }
 </script>
 
